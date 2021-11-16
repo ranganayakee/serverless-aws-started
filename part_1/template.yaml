@@ -4,7 +4,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Introduction to serverless for developers:part1 GitHub to Slack
-  
+
 ##########################################################################
 #  Parameters & Globals                                                  #
 ##########################################################################
@@ -12,11 +12,11 @@ Parameters:
   slackUrl:
     Type: String
     Description: your Slack Webhook Url.
-    Default: ""
+    Default: 'https://hooks.slack.com/services/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'
 Resources:
-##########################################################################
-#   Lambda Function                                                      #
-##########################################################################
+  ##########################################################################
+  #   Lambda Function                                                      #
+  ##########################################################################
   webhookHandler:
     Type: AWS::Serverless::Function
     Description: A github webhook handler
@@ -35,14 +35,10 @@ Resources:
             Path: /
             Method: POST
 
-
 ##########################################################################
 #   Stack outputs                                                        #
 ##########################################################################
 Outputs:
   GitHubEndpoint:
-    Description: "The star invocation URl to provide to github webhook"
-    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com"
-
-
-
+    Description: 'The star invocation URl to provide to github webhook'
+    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com'
